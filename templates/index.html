@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nova | Your AI Study Companion</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+  <div class="stars" aria-hidden="true"></div><div class="orb orb-one"></div><div class="orb orb-two"></div><div class="orb orb-three"></div>
+  <main class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#"><span class="brand-mark">✦</span><span>NOVA</span></a>
+      <button class="new-chat" id="newChat"><span>＋</span> New conversation</button>
+      <nav>
+        <p class="nav-label">STUDY SPACE</p>
+        <button class="nav-item active"><span>◉</span> Study assistant</button>
+        <button class="nav-item" id="flashcardButton"><span>▣</span> Flashcards</button>
+        <button class="nav-item"><span>◷</span> Recent chats</button>
+      </nav>
+      <div class="sidebar-footer"><div class="avatar">A</div><div><strong>Alex's space</strong><small>Ready to learn</small></div><span class="dots">•••</span></div>
+    </aside>
+    <section class="workspace">
+      <header>
+        <div><p class="eyebrow">PERSONAL LEARNING COMPANION</p><h1>Good afternoon, Alex.</h1></div>
+        <div class="header-controls"><button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode" title="Switch theme"><span class="sun-icon">☼</span><span class="moon-icon">☾</span></button><label>AI Model <select id="modelSelect"><option value="gemini">Gemini</option><option value="openai">OpenAI</option></select></label><label>Subject <select id="subject"><option>General</option><option>Mathematics</option><option>Science</option><option>History</option><option>English</option><option>Computer Science</option><option>SQL</option></select></label><label>Level <select id="level"><option>High school</option><option>Middle school</option><option>College</option></select></label></div>
+      </header>
+      <div class="chat-area" id="chatArea">
+        <div class="welcome" id="welcome">
+          <div class="sparkle">✦</div><p class="eyebrow">LET'S MAKE PROGRESS</p>
+          <h2>What would you like<br />to understand today?</h2>
+          <p class="welcome-copy">Ask a question, work through a challenge, or turn a big topic into a focused study plan.</p>
+          <div class="prompt-grid">
+            <button class="prompt-card" data-prompt="Explain photosynthesis simply, then quiz me."><span class="card-icon green">⌁</span><b>Explain a concept</b><small>Make tricky ideas click</small></button>
+            <button class="prompt-card" data-prompt="Help me create a study plan for my upcoming exam."><span class="card-icon orange">◴</span><b>Build a study plan</b><small>Focus your next session</small></button>
+            <button class="prompt-card" data-prompt="Quiz me on a topic I am studying."><span class="card-icon purple">✦</span><b>Test my knowledge</b><small>Practice with confidence</small></button>
+          </div>
+          <section class="topic-starters" aria-label="Technical question starters">
+            <p class="eyebrow">TECHNICAL CONCEPTS</p>
+            <div class="starter-list">
+              <button data-prompt="What is Python? Explain its main features and characteristics with simple examples.">What is Python?</button>
+              <button data-prompt="Explain DBMS: its definition, features, advantages, and real-world examples.">Explain DBMS</button>
+              <button data-prompt="What is HTML? Explain the basic structure of an HTML document and common tags.">HTML basics</button>
+              <button data-prompt="What is CSS? Explain its purpose, features, and the difference between inline, internal, and external CSS.">CSS explained</button>
+              <button data-prompt="Explain Java: its main features, characteristics, and where it is used.">Java features</button>
+              <button data-prompt="What is JavaScript? Explain how it differs from Java and give simple examples of its use in websites.">JavaScript concepts</button>
+              <button data-prompt="Explain SQL JOINs with a simple example.">SQL questions</button>
+            </div>
+          </section>
+        </div>
+        <div class="messages" id="messages" aria-live="polite"></div>
+      </div>
+      <div class="composer-wrap">
+        <div class="quick-actions"><button data-prompt="Help me understand this step by step.">Explain simply</button><button data-prompt="Create a quick quiz for me.">Quiz me</button><button data-prompt="Make a study plan for today.">Study plan</button></div>
+        <form class="composer" id="chatForm"><textarea id="messageInput" rows="1" placeholder="Ask anything about your studies..." aria-label="Your study question"></textarea><button type="submit" class="send" aria-label="Send message">↑</button></form>
+        <p class="hint">Nova can make mistakes. Check important information and use your own thinking.</p>
+      </div>
+    </section>
+  </main>
+  <dialog id="flashcardModal"><button class="close" id="closeModal">×</button><p class="eyebrow">QUICK REVIEW</p><h2>Make flashcards</h2><p>Enter a topic and get three prompts to practise active recall.</p><form id="flashcardForm"><input id="flashcardTopic" placeholder="e.g. Newton's laws" required><button>Create cards</button></form><div id="cards"></div></dialog>
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
